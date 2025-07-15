@@ -16,6 +16,7 @@
   padding: 1rem;
   border-radius: 8px;
   margin-bottom: 1.5rem;
+  cursor: pointer;
 }
 
 .shop-name {
@@ -26,7 +27,7 @@
 .cart-icon {
   position: relative;
   font-size: 1.5rem;
-  cursor: pointer;
+  user-select: none;
 }
 
 .cart-count {
@@ -80,4 +81,34 @@
 
 .product-card button:hover {
   background-color: #2980b9;
+}
+
+/* Cart Section */
+.cart-section {
+  margin-bottom: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+  background: #f9f9f9;
+}
+
+/* Cart Table */
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cart-table th,
+.cart-table td {
+  padding: 0.5rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.cart-table thead th {
+  border-bottom: 2px solid #bbb;
+}
+
+.cart-table tfoot td {
+  border-top: 2px solid #bbb;
+  font-weight: bold;
 }
