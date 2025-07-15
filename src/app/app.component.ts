@@ -1,20 +1,39 @@
-import { Component } from '@angular/core';
-import { GreetingService } from './service/greeting.service';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+interface Product {
+    id: number;
+    name: string;
+    description: string;
+    price: number;
+  }
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'Fetching Database...';
+export class AppComponent implements OnInit {
+  products: Product[] = [];
+  cart: Product[] = [];
 
-  constructor(private greetingService: GreetingService) {}
+  constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.greetingService.getGreeting('Jesse').subscribe({
-      next: (response) => (this.title = response),
-      error: (err) => console.error('Error fetching greeting', err),
+    this.fetchProducts();
+  }
+
+  fetchProducts() {
+    this.http.get<Product[]>('/api/product/all').subscribe(data => {
+      this.products = data;
     });
+  }
+
+  addToCart(product: Product) {
+    this.cart.push(product);
+  }
+
+  get cartCount(): number {
+    return this.cart.length;
   }
 }
