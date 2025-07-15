@@ -13,6 +13,6 @@ export class GreetingService {
 
   getGreeting(name?: string): Observable<string> {
     const params = name ? `?name=${encodeURIComponent(name)}` : '';
-    return this.http.get(`${this.baseUrl}/home${params}`, { responseType: 'text' });
+    return this.http.get(`${this.baseUrl}/product/home${params}`, { responseType: 'text' });
   }
 }
